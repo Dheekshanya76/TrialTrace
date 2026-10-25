@@ -1,7 +1,7 @@
-# NyayaLens: explainable anomaly analysis of court outcomes (NCRB 2023)
+# TrialTrace: explainable anomaly analysis of court outcomes (NCRB 2023)
 
 Which crime heads show unusual court outcomes in India's 19 metropolitan cities, and how sure can we be?
-NyayaLens parses NCRB's court-disposal tables, attaches confidence intervals to every rate, flags outliers with
+TrialTrace parses NCRB's court-disposal tables, attaches confidence intervals to every rate, flags outliers with
 three methods, explains each flag in plain English and tests how stable it is.
 
 ![Court outcomes by crime head](docs/figures/anomaly_map.png)
