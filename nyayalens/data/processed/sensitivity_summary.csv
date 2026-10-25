@@ -1,0 +1,4 @@
+contamination,flagged_robust_z,flagged_isolation_forest,flagged_lof,if_and_z,lof_and_z,if_and_lof
+0.05,5,5,5,3,0,2
+0.1,5,10,10,4,0,4
+0.15,5,15,15,5,0,6
