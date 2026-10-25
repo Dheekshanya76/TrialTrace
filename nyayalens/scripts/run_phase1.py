@@ -15,6 +15,15 @@ report = {"identities": check_identities(df), "rates": check_rates(df), "hierarc
 for k, v in report.items():
     v.to_csv(out / f"validation_{k}.csv", index=False)
 
+import pandas as pd
+n_agg = int(df.row_type.isin(["parent", "subtotal", "grand_total"]).sum())
+summary = pd.DataFrame([
+    {"check": "Column formulas (6 identities per row)", "comparisons": 6 * len(df), "failures": len(report["identities"])},
+    {"check": "Published conviction and pendency rates vs recomputed", "comparisons": 2 * len(df), "failures": len(report["rates"])},
+    {"check": "Parents, subtotals and grand totals vs sum of parts (18 count columns)", "comparisons": 18 * n_agg, "failures": len(report["hierarchy"])},
+])
+summary.to_csv(out / "validation_summary.csv", index=False)
+
 print(df.groupby(["table", "row_type"]).size().unstack(fill_value=0))
 d = df[df.row_type == "detail"]
 print("\nDetail rows:", len(d), "| with >=30 completed trials:", int((d.trials_completed >= 30).sum()))
